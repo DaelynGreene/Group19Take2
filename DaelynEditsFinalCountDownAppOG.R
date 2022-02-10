@@ -130,6 +130,7 @@ server <- function(input, output, session) {
               paste(ClickCounter$NumberClicks), "times!"
             )
           ))
+        if(ClickCounter$NumberClicks<=5000){play(load.wave("FCW.WAV"))}
         }
       }
     })
@@ -142,7 +143,7 @@ server <- function(input, output, session) {
   
 
   observeEvent(input$Timer, {
-    play(load.wave("FCW.wav"))
+    #play(load.wave("FCW.wav"))
     active(TRUE)
     timer(5)
     output$DisplayingClicks<-renderText("")
