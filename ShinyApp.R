@@ -27,17 +27,39 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  
+  
+observeEvent(input$rbusiness, {
+  output$plot <- renderPlot({
+    autoplot(BUSINESS, color = '#ff8200')
+    
+  })})
+  
+observeEvent(input$rholiday, {
+    output$plot <- renderPlot({
+      autoplot(HOLIDAY, color = '#82ff33')
+      
+   })})
+    
+
+observeEvent(input$rvisiting, {
+  output$plot <- renderPlot({
+    autoplot(VISITING, color = '#ff7933')
+    
+  })})
+
+observeEvent(input$rother, {
+  output$plot <- renderPlot({
+    autoplot(OTHER, color = '#1fecfa')
+    
+  })})
+
+
 
   output$plot <- renderPlot({
     autoplot(MYDATA)
-  #  autoplot(BUSINESS)
-  # autoplot(HOLIDAY)
-  # autoplot(VISITING)
-  # autoplot(OTHER)
   })
 
-  
-  
 }
 
 shinyApp(ui, server)
